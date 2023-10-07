@@ -93,5 +93,6 @@ main, button, input, span, label {
 .shadow-light {
   box-shadow: 0 10px 20px 5px rgba(225, 225, 214, 0.5);
 }
-
-
+/*.grid-container-techno {*/
+/*  margin: 30px!important;*/
+/*}*/
