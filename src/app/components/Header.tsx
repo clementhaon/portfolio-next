@@ -31,7 +31,8 @@ export default function Header() {
         }
 
         //Set text gsap
-        const text = "Clément HAON, développeur full stack";
+        //Set text gsap
+        const text = "Clément HAON\nDéveloppeur\nfull stack";
         const container = document.getElementById('text-container');
         setPosition(true);
         if (container) {
@@ -39,10 +40,14 @@ export default function Header() {
             container.style.top = `${textContainerTop}px`;
             text.split('').forEach((letter, index) => {
                 const span = document.createElement('span');
+                if (letter === '\n') {
+                    span.style.display = 'block'; // Forcer le retour à la ligne avec un élément de bloc
+                }
                 span.textContent = letter;
                 span.style.opacity = "0";
                 span.style.fontWeight = "600";
-                span.style.fontSize = '48px';
+                span.style.fontSize = '40px';
+                span.style.textTransform = "uppercase";
                 container.appendChild(span);
 
                 gsap.to(span, {
@@ -57,6 +62,7 @@ export default function Header() {
                 });
             });
         }
+
 
     }, []);
     useEffect(() => {

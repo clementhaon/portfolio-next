@@ -17,7 +17,7 @@ import Switch from "@mui/material/Switch";
 
 const Widget = styled('div')({
     borderRadius: 16,
-    width: 343,
+    width: 250,
     maxWidth: '100%',
     margin: 'auto',
     position: 'relative',
@@ -84,8 +84,8 @@ export default function Settings() {
     return (
         <Box sx={{ overflow: 'hidden', position:'fixed', top:'90px', right:'24px' }}>
             <Widget>
-                <Box sx={{display:'flex', justifyContent:'space-around', alignItems:'center', padding:'10px'}}>
-                    <Box sx={{ backgroundColor:'rgb(39, 42, 44, 0.6)', width:'80%', border: '0.3px solid #828282', display:'flex', justifyContent:'center', alignItems:'center', borderRadius: 16,}}>
+                <Box sx={{display:'flex', justifyContent:'space-around', alignItems:'center', padding:'10px 10px 0 10px'}}>
+                    <Box sx={{ backgroundColor:'rgb(39, 42, 44, 0.6)', width:'100%', border: '0.3px solid #828282', display:'flex', justifyContent:'center', alignItems:'center', borderRadius: "16px",}}>
                         <FormControlLabel
                             control={
                                 <MaterialUISwitch
@@ -100,8 +100,8 @@ export default function Settings() {
                     </Box>
                 </Box>
                 <Box sx={{display:'flex', justifyContent:'space-around', alignItems:'center', padding:'10px'}}>
-                    <Box sx={{ backgroundColor:'rgb(39, 42, 44, 0.6)', width:'80%', border: '0.3px solid #828282', display:'flex', justifyContent:'center', alignItems:'center', borderRadius: 16,}}>
-                        <FormControl sx={{padding:3}}>
+                    <Box sx={{ backgroundColor:'rgb(39, 42, 44, 0.6)', width:'100%', border: '0.3px solid #828282', display:'flex', justifyContent:'center', alignItems:'center', borderRadius: "26px",}}>
+                        <FormControl sx={{padding:2}}>
                             <p style={{margin:0, padding:0,color:'#fff'}} id="column-radio-buttons-group-label">Langue</p>
                             <RadioGroup
                                 defaultValue="Fr"
@@ -115,59 +115,59 @@ export default function Settings() {
                         </FormControl>
                     </Box>
                 </Box>
-                <Box
-                    sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        mt: -1,
-                    }}
-                >
-                    <IconButton aria-label="previous song">
-                        <FastRewindRounded fontSize="large" htmlColor={mainIconColor} />
-                    </IconButton>
-                    <IconButton
-                        aria-label={paused ? 'play' : 'pause'}
-                        onClick={() => setPaused(!paused)}
-                    >
-                        {paused ? (
-                            <PlayArrowRounded
-                                sx={{ fontSize: '3rem' }}
-                                htmlColor={mainIconColor}
-                            />
-                        ) : (
-                            <PauseRounded sx={{ fontSize: '3rem' }} htmlColor={mainIconColor} />
-                        )}
-                    </IconButton>
-                    <IconButton aria-label="next song">
-                        <FastForwardRounded fontSize="large" htmlColor={mainIconColor} />
-                    </IconButton>
-                </Box>
-                <Stack spacing={2} direction="row" sx={{ mb: 1, px: 1 }} alignItems="center">
-                    <VolumeDownRounded htmlColor={lightIconColor} />
-                    <Slider
-                        aria-label="Volume"
-                        defaultValue={30}
-                        sx={{
-                            color:'#fff',
-                            '& .MuiSlider-track': {
-                                border: 'none',
-                            },
-                            '& .MuiSlider-thumb': {
-                                width: 24,
-                                height: 24,
-                                backgroundColor: '#fff',
-                                '&:before': {
-                                    boxShadow: '0 4px 8px rgba(0,0,0)',
-                                },
-                                '&:hover, &.Mui-focusVisible, &.Mui-active': {
-                                    boxShadow: 'none',
-                                },
-                            },
-                        }}
-                    />
-                    <VolumeUpRounded htmlColor={lightIconColor} />
-                </Stack>
+                {/*<Box*/}
+                {/*    sx={{*/}
+                {/*        display: 'flex',*/}
+                {/*        alignItems: 'center',*/}
+                {/*        justifyContent: 'center',*/}
+                {/*        mt: -1,*/}
+                {/*    }}*/}
+                {/*>*/}
+                {/*    <IconButton aria-label="previous song">*/}
+                {/*        <FastRewindRounded fontSize="large" htmlColor={mainIconColor} />*/}
+                {/*    </IconButton>*/}
+                {/*    <IconButton*/}
+                {/*        aria-label={paused ? 'play' : 'pause'}*/}
+                {/*        onClick={() => setPaused(!paused)}*/}
+                {/*    >*/}
+                {/*        {paused ? (*/}
+                {/*            <PlayArrowRounded*/}
+                {/*                sx={{ fontSize: '3rem' }}*/}
+                {/*                htmlColor={mainIconColor}*/}
+                {/*            />*/}
+                {/*        ) : (*/}
+                {/*            <PauseRounded sx={{ fontSize: '3rem' }} htmlColor={mainIconColor} />*/}
+                {/*        )}*/}
+                {/*    </IconButton>*/}
+                {/*    <IconButton aria-label="next song">*/}
+                {/*        <FastForwardRounded fontSize="large" htmlColor={mainIconColor} />*/}
+                {/*    </IconButton>*/}
+                {/*</Box>*/}
+                {/*<Stack spacing={2} direction="row" sx={{ mb: 1, px: 1 }} alignItems="center">*/}
+                {/*    <VolumeDownRounded htmlColor={lightIconColor} />*/}
+                {/*    <Slider*/}
+                {/*        aria-label="Volume"*/}
+                {/*        defaultValue={30}*/}
+                {/*        sx={{*/}
+                {/*            color:'#fff',*/}
+                {/*            '& .MuiSlider-track': {*/}
+                {/*                border: 'none',*/}
+                {/*            },*/}
+                {/*            '& .MuiSlider-thumb': {*/}
+                {/*                width: 24,*/}
+                {/*                height: 24,*/}
+                {/*                backgroundColor: '#fff',*/}
+                {/*                '&:before': {*/}
+                {/*                    boxShadow: '0 4px 8px rgba(0,0,0)',*/}
+                {/*                },*/}
+                {/*                '&:hover, &.Mui-focusVisible, &.Mui-active': {*/}
+                {/*                    boxShadow: 'none',*/}
+                {/*                },*/}
+                {/*            },*/}
+                {/*        }}*/}
+                {/*    />*/}
+                {/*    <VolumeUpRounded htmlColor={lightIconColor} />*/}
+                {/*</Stack>*/}
             </Widget>
         </Box>
     );

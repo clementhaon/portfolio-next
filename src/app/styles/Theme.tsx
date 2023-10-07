@@ -53,7 +53,7 @@ const ToggleColorMode: React.FC<ToggleColorModeProps> = ({ children }) => {    c
         palette: mode === 'light' ? lightPalette : darkPalette,
         components: {MuiTabs : mode === 'light' ? darkComponent : lightComponent}
     };
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const theme = React.useMemo(() => createTheme(themeOptions), [mode]);
 
     return (
