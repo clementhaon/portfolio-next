@@ -1,26 +1,33 @@
 'use client'
-import React from 'react';
+import React, {ReactNode} from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { CssBaseline } from '@mui/material';
+import {CssBaseline, PaletteMode} from '@mui/material';
+import {ColorModeContextType} from '../types/theme';
+import { ThemeOptions, PaletteOptions } from '@mui/material/styles';
 
-export const ColorModeContext = React.createContext(undefined);
 
-export default function ToggleColorMode({ children }) {
-    const [mode, setMode] = React.useState('dark');
+export const ColorModeContext = React.createContext<ColorModeContextType>({
+    mode: 'dark',
+    toggleColorMode: () => {},
+});
+interface ToggleColorModeProps {
+    children: ReactNode; // Définissez le type de children comme ReactNode
+}
+const ToggleColorMode: React.FC<ToggleColorModeProps> = ({ children }) => {    const [mode, setMode] = React.useState('dark');
 
     const toggleColorMode = () => {
         setMode(prevMode => (prevMode === 'light' ? 'dark' : 'light'));
     };
 
-    const lightPalette = {
-        mode:mode,
+    const lightPalette: PaletteOptions = {
+        mode:mode as PaletteMode,
         background: {
             default: '#fff',
         },
     };
 
-    const darkPalette = {
-        mode:mode,
+    const darkPalette: PaletteOptions = {
+        mode:mode as PaletteMode,
         background: {
             default: '#080808',
         },
@@ -42,7 +49,7 @@ export default function ToggleColorMode({ children }) {
 
     };
 
-    const themeOptions = {
+    const themeOptions: ThemeOptions = {
         palette: mode === 'light' ? lightPalette : darkPalette,
         components: {MuiTabs : mode === 'light' ? darkComponent : lightComponent}
     };
@@ -58,3 +65,5 @@ export default function ToggleColorMode({ children }) {
         </ColorModeContext.Provider>
     );
 }
+export default ToggleColorMode;
+

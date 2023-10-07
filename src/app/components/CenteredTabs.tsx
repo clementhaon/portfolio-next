@@ -7,7 +7,7 @@ import {ColorModeContext} from "../styles/Theme";
 import Techno from './Techno';
 import About from './About';
 import Experience from "./Experience";
-import {Typography} from "@mui/material";
+import {ColorModeContextType} from '../types/theme';
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -45,13 +45,13 @@ function a11yProps(index: number) {
 
 export default function CenteredTabs() {
     const [value, setValue] = useState(0);
-    const { mode } = React.useContext(ColorModeContext);
+    const { mode } = React.useContext<ColorModeContextType>(ColorModeContext);
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);
     };
     useEffect(() => {
-        const handleKeyDown = (event) => {
+        const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === 'ArrowRight') {
                 // Si la touche de droite est pressée, augmentez la valeur de l'onglet actif
                 setValue((prevValue) => (prevValue + 1) % numberOfTabs);
@@ -82,17 +82,12 @@ export default function CenteredTabs() {
                     centered
                     selectionFollowsFocus
                     className={`selected-tabs-${mode === 'dark' ? 'dark': 'light'}`}
+                    aria-label="basic tabs example"
                 >
 
-                    <Tab className={`selected-tab-${mode === 'dark' ? 'dark': 'light'}`} label="Technos" {...a11yProps(0)}>
-
-                    </Tab>
-                    <Tab className={`selected-tab-${mode === 'dark' ? 'dark': 'light'}`} label="Projets" {...a11yProps(1)}>
-
-                    </Tab>
-                    <Tab className={`selected-tab-${mode === 'dark' ? 'dark': 'light'}`} label="À propos" {...a11yProps(2)}>
-
-                    </Tab>
+                    <Tab className={`selected-tab-${mode === 'dark' ? 'dark': 'light'}`} label="Technos" {...a11yProps(0)}/>
+                    <Tab className={`selected-tab-${mode === 'dark' ? 'dark': 'light'}`} label="Projets" {...a11yProps(1)}/>
+                    <Tab className={`selected-tab-${mode === 'dark' ? 'dark': 'light'}`} label="À propos" {...a11yProps(2)}/>
                 </Tabs>
             </Box>
             <CustomTabPanel value={value} index={0}>

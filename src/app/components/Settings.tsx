@@ -102,10 +102,9 @@ export default function Settings() {
                 <Box sx={{display:'flex', justifyContent:'space-around', alignItems:'center', padding:'10px'}}>
                     <Box sx={{ backgroundColor:'rgb(39, 42, 44, 0.6)', width:'80%', border: '0.3px solid #828282', display:'flex', justifyContent:'center', alignItems:'center', borderRadius: 16,}}>
                         <FormControl sx={{padding:3}}>
-                            <p style={{margin:0, padding:0}} id="column-radio-buttons-group-label" sx={{color:'#fff'}}>Langue</p>
+                            <p style={{margin:0, padding:0,color:'#fff'}} id="column-radio-buttons-group-label">Langue</p>
                             <RadioGroup
                                 defaultValue="Fr"
-                                column
                                 aria-labelledby="column-radio-buttons-group-label"
                                 name="column-radio-buttons-group"
                             >
