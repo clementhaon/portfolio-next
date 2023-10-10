@@ -31,7 +31,7 @@ const TechnoIntegration = () => {
 
     return (
         <>
-            <div style={{display:'flex', flexDirection: "column", justifyContent:"center", alignItems:"center", height:'300px'}}>
+            <div style={{position : 'relative',display:'flex', flexDirection: "column", justifyContent:"center", alignItems:"center", height:'300px'}}>
                 <h4 className={`${mode === 'dark' ? 'background-badge-dark' : 'background-badge-light'}`} style={{position:"absolute", top: 0, left : 0, borderRadius:"10px", padding: "10px"}}>Intégration</h4>
                 <Carousel data={data} interval={10000}/>
             </div>
