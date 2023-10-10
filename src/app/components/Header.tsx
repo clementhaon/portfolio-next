@@ -69,6 +69,7 @@ export default function Header() {
         const handleClickOutside = (event: any) => {
             // console.log(event.target.className)
             let isPathElement = event.target.className.baseVal === 'svg-settings';
+            console.log(event.target)
             if (event.target.className.baseVal === '' ||event.target.classList.contains('svg-settings') ) isPathElement = true;
             // console.log(isPathElement)
             // console.log(openSettings)
