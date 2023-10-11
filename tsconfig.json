@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "types": ["react", "react-dom"],
+    "types": ["react", "react-dom", "./src/app/types/react-spring-carousel.d.ts"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,

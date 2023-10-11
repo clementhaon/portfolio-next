@@ -21,6 +21,7 @@
     "react-bootstrap": "^2.9.0",
     "react-dom": "^18",
     "react-icons": "^4.11.0",
+    "react-simply-carousel": "^9.0.5",
     "react-spring-carousel": "^2.0.19"
   },
   "devDependencies": {

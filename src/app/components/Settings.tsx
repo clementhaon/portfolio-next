@@ -109,8 +109,8 @@ export default function Settings() {
                                 name="column-radio-buttons-group"
                             >
                                 <FormControlLabel value="Fr" control={<Radio sx={{color:'#fff'}} />} label="Français" />
-                                <FormControlLabel value="En" control={<Radio sx={{color:'#fff'}}/>} label="English" />
-                                <FormControlLabel value="De" control={<Radio sx={{color:'#fff'}} />} label="Deutsch" />
+                                <FormControlLabel disabled value="En" control={<Radio sx={{color:'#fff'}}/>} label="English" />
+                                <FormControlLabel disabled value="De" control={<Radio sx={{color:'#fff'}} />} label="Deutsch" />
                             </RadioGroup>
                         </FormControl>
                     </Box>

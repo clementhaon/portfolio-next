@@ -129,3 +129,6 @@ main, button, input, span, label, h1, h2, p, h3, h4 {
   opacity: 1;
   transition: opacity 0.5s ease; /* Durée de la transition et fonction d'accélération */
 }
+.use-spring-carousel-item {
+  justify-content: center;
+}

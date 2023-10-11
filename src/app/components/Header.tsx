@@ -5,6 +5,7 @@ import {Avatar, Box} from "@mui/material";
 import { BsToggles } from 'react-icons/bs';
 import Settings from './Settings';
 import gsap from 'gsap';
+import {AiFillCloseCircle} from "react-icons/ai";
 
 
 export default function Header() {
@@ -12,6 +13,7 @@ export default function Header() {
     const [openSettings, setOpenSettings] = useState<boolean>(false);
     const [position, setPosition] = useState<boolean>(false);
     const settingsRef: RefObject<HTMLDivElement> = useRef(null);
+    const buttonsRef: RefObject<HTMLDivElement> = useRef(null);
     const { mode } = React.useContext(ColorModeContext);
 
     useEffect(() => {
@@ -30,7 +32,6 @@ export default function Header() {
             avatar.style.top = `${ensembleTop}px`;
         }
 
-        //Set text gsap
         //Set text gsap
         const text = "Clément HAON\nDéveloppeur\nfull stack";
         const container = document.getElementById('text-container');
@@ -67,17 +68,7 @@ export default function Header() {
     }, []);
     useEffect(() => {
         const handleClickOutside = (event: any) => {
-            // console.log(event.target.className)
-            let isPathElement = event.target.className.baseVal === 'svg-settings';
-            console.log(event.target)
-            if (event.target.className.baseVal === '' ||event.target.classList.contains('svg-settings') ) isPathElement = true;
-            // console.log(isPathElement)
-            // console.log(openSettings)
-            if (isPathElement && !openSettings) {
-                // console.log('premier if')
-                setOpenSettings(true);
-            } else if ((!settingsRef.current || !settingsRef.current.contains(event.target as Node)) && (!isPathElement || (isPathElement && openSettings))) {
-                // console.log('second if')
+             if ((!settingsRef.current || !settingsRef.current.contains(event.target as Node)) && (!buttonsRef.current || !buttonsRef.current.contains(event.target as Node))) {
                 setOpenSettings(false);
             }
         };
@@ -116,15 +107,32 @@ export default function Header() {
                 }
             </div>
             <Box className="flex-end-row">
-                <Box
-                    className="icon-container svg-settings"
-                    style={{backgroundColor: `${mode === 'dark' ? '#2d2d2d':'#fff'}`}}
-                >
-                    <BsToggles
-                        className={'svg-settings'}
-                        size={30}
-                    />
-                </Box>
+                {
+                    !openSettings ? (
+                        <Box
+                            className="icon-container svg-settings"
+                            ref={buttonsRef}
+                            style={{backgroundColor: `${mode === 'dark' ? '#2d2d2d':'#fff'}`}}
+                            onClick={()=>setOpenSettings(true)}
+                        >
+                            <BsToggles
+                                size={30}
+                            />
+                        </Box>
+                    ) : (
+                        <Box
+                            className="icon-container svg-settings"
+                            style={{backgroundColor: `${mode === 'dark' ? '#2d2d2d':'#fff'}`}}
+                            ref={buttonsRef}
+                            onClick={()=>setOpenSettings(false)}
+                        >
+                            <AiFillCloseCircle
+                                size={30}
+                            />
+                        </Box>
+                    )
+                }
+
                 <div>
                     <div ref={settingsRef} className={`settings-container ${openSettings ? 'open' : 'closed'}`}>
                         {openSettings && <Settings />}
