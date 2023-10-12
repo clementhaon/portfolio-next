@@ -9,6 +9,7 @@ export default function Home() {
         <ToggleColorMode>
             <Header/>
             <CenteredTabs/>
+            <div style={{minHeight:'50vh'}}/>
         </ToggleColorMode>
     </main>
   )

@@ -82,7 +82,7 @@ export default function Settings() {
     const mainIconColor = '#fff';
     const lightIconColor ='rgba(255,255,255,0.4)';
     return (
-        <Box sx={{ overflow: 'hidden', position:'fixed', top:'90px', right:'24px' }}>
+        <Box sx={{ overflow: 'hidden', position:'fixed', top:'90px', right:'24px', zIndex:1000 }}>
             <Widget>
                 <Box sx={{display:'flex', justifyContent:'space-around', alignItems:'center', padding:'10px 10px 0 10px'}}>
                     <Box sx={{ backgroundColor:'rgb(39, 42, 44, 0.6)', width:'100%', border: '0.3px solid #828282', display:'flex', justifyContent:'center', alignItems:'center', borderRadius: "16px",}}>

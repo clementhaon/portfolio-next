@@ -1,5 +1,6 @@
 // import Carousel from './ControledCarousel';
 import Carousel from './Carousel';
+import ScrollingComponent from './ScollReveal';
 import * as React from "react";
 import {ColorModeContext} from "../styles/Theme";
 import {CarouselImageType} from '../types/carousel';
@@ -33,8 +34,9 @@ const TechnoIntegration = () => {
     return (
         <>
             <div style={{position : 'relative',display:'flex', flexDirection: "column", justifyContent:"center", alignItems:"center", height:'300px'}}>
-                <h4 className={`${mode === 'dark' ? 'background-badge-dark' : 'background-badge-light'}`} style={{position:"absolute", top: 0, left : 0, borderRadius:"10px", padding: "10px"}}>Intégration</h4>
-                <Carousel data={data} interval={8000}/>
+                {/*<h4 className={`${mode === 'dark' ? 'background-badge-dark' : 'background-badge-light'}`} style={{position:"absolute", top: 0, left : 0, borderRadius:"10px", padding: "10px"}}>Intégration</h4>*/}
+                {/*<Carousel data={data} interval={8000}/>*/}
+                <ScrollingComponent/>
             </div>
 
         </>

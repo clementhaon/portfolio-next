@@ -112,7 +112,7 @@ export default function Header() {
                         <Box
                             className="icon-container svg-settings"
                             ref={buttonsRef}
-                            style={{backgroundColor: `${mode === 'dark' ? '#2d2d2d':'#fff'}`}}
+                            style={{backgroundColor: `${mode === 'dark' ? '#2d2d2d':'#fff'}`, zIndex:1000}}
                             onClick={()=>setOpenSettings(true)}
                         >
                             <BsToggles
@@ -122,7 +122,7 @@ export default function Header() {
                     ) : (
                         <Box
                             className="icon-container svg-settings"
-                            style={{backgroundColor: `${mode === 'dark' ? '#2d2d2d':'#fff'}`}}
+                            style={{backgroundColor: `${mode === 'dark' ? '#2d2d2d':'#fff'}`, zIndex:1000}}
                             ref={buttonsRef}
                             onClick={()=>setOpenSettings(false)}
                         >
@@ -134,7 +134,7 @@ export default function Header() {
                 }
 
                 <div>
-                    <div ref={settingsRef} className={`settings-container ${openSettings ? 'open' : 'closed'}`}>
+                    <div ref={settingsRef} className={`settings-container ${openSettings ? 'open' : 'closed'}`} style={{zIndex:1000}}>
                         {openSettings && <Settings />}
                     </div>
                 </div>

@@ -1,37 +1,48 @@
-import Grid from '@mui/material/Unstable_Grid2';
-import { styled } from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
-import TechnoFrontEnd from './TechnoFrontEnd';
-import TechnoBackEnd from './TechnoBackEnd';
-import TechnoIntegration from './TechnoIntegration';
-import TechnoEnvironment from './TechnoEnvironment';
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-    minHeight:'300px'
-}));
+import { useRef } from "react";
+import {
+    motion,
+    useScroll,
+    useSpring,
+    useTransform,
+    MotionValue
+} from "framer-motion";
 
-const Techno = () => {
-
-    return (
-        <Grid spacing={3} container>
-            <Grid xs={7} className="grid-container-techno">
-                <Item elevation={6}><TechnoFrontEnd/></Item>
-            </Grid>
-            <Grid xs={5} className="grid-container-techno">
-                <Item elevation={3}><TechnoBackEnd/></Item>
-            </Grid>
-            <Grid xs={5} className="grid-container-techno">
-                <Item elevation={3}><TechnoIntegration/></Item>
-            </Grid>
-            <Grid xs={7} className="grid-container-techno">
-                <Item elevation={3}><TechnoEnvironment/></Item>
-            </Grid>
-        </Grid>
-    )
+function useParallax(value: MotionValue<number>, distance: number) {
+    return useTransform(value, [0, 1], [-distance, distance]);
 }
 
-export default Techno;
+function Image({ id }: { id: number }) {
+    const ref = useRef(null);
+    const { scrollYProgress } = useScroll({ target: ref });
+    const y = useParallax(scrollYProgress, 300);
+
+    return (
+        <section>
+            <div ref={ref}>
+                <img className="image-scroll" src={`/${id}.svg`} alt="A London skyscraper" />
+            </div>
+            <motion.h2 className="h2-scroll" style={{ y }}>{id === 1 ? '#BACKEND' : id === 2 ? "#FRONTEND" : id === 3 ? "#DEPLOIEMENT" : "#ENVIRONNEMENT"}</motion.h2>
+        </section>
+    );
+}
+
+export default function Techno() {
+    const { scrollYProgress } = useScroll();
+    const scaleX = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001
+    });
+
+    return (
+        <>
+            <div className="scroll">
+                {[1, 2, 3, 4].map((image, index) => (
+                    <Image id={image} key={index} />
+                ))}
+                <motion.div className="progress" style={{ scaleX }} />
+            </div>
+        </>
+
+    );
+}

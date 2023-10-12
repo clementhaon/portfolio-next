@@ -13,7 +13,7 @@ export const ColorModeContext = React.createContext<ColorModeContextType>({
 interface ToggleColorModeProps {
     children: ReactNode; // Définissez le type de children comme ReactNode
 }
-const ToggleColorMode: React.FC<ToggleColorModeProps> = ({ children }) => {    const [mode, setMode] = React.useState('dark');
+const ToggleColorMode: React.FC<ToggleColorModeProps> = ({ children }) => {    const [mode, setMode] = React.useState('light');
 
     const toggleColorMode = () => {
         setMode(prevMode => (prevMode === 'light' ? 'dark' : 'light'));

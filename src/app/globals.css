@@ -3,8 +3,8 @@
   --border-radius: 12px;
 
 }
-main, button, input, span, label, h1, h2, p, h3, h4 {
-  font-family: 'Chakra Petch', sans-serif!important;
+main, button, input, span, label, h1, h2, p, h3, h4, div {
+  font-family: var(--chakra-petch), sans-serif!important;
 }
 .dark-background {
   background-image: url("../asset/27230.jpg");
@@ -107,28 +107,77 @@ main, button, input, span, label, h1, h2, p, h3, h4 {
   text-transform: uppercase;
 
 }
-.indicators {
+.scroll {
+  scroll-snap-type: y mandatory;
+}
+section {
+  height: 100vh;
   display: flex;
   justify-content: center;
-  margin-top: 10px;
+  align-items: center;
+  position: relative;
+  scroll-snap-align: center;
+  perspective: 500px;
 }
 
-.indicator {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: #ccc;
-  margin: 0 5px;
-  cursor: pointer;
+section > div {
+  width: 70vw;
+  height: 50vh;
+  position: relative;
+  max-height: 90vh;
+  margin: 20px;
+  overflow: hidden;
 }
 
-.indicator.active {
-  background-color: #83b5ec; /* Couleur du fond pour l'indicateur actif */
+.image-scroll {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(110, 110, 110, 0.12);
+  border-radius: 10px;
+
 }
-.carousel-image {
-  opacity: 1;
-  transition: opacity 0.5s ease; /* Durée de la transition et fonction d'accélération */
+
+.h2-scroll {
+  margin: 0;
+  left: calc(50% + 20vw);
+  letter-spacing: -1px;
+  line-height: 1.2;
+  position: absolute;
+  padding:5px;
+  border-radius: 10px;
+  background-image: linear-gradient(90deg, #479eec 0%, #cd40f5 49%, #f0607b 100%);
 }
-.use-spring-carousel-item {
-  justify-content: center;
+
+/*section {*/
+/*  height: 100vh;*/
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*  align-items: center;*/
+/*  position: relative;*/
+/*  scroll-snap-align: center;*/
+/*  perspective: 500px;*/
+/*}*/
+
+/*section > div {*/
+/*  width: 300px;*/
+/*  height: 400px;*/
+/*  position: relative;*/
+/*  max-height: 90vh;*/
+/*  margin: 20px;*/
+/*  overflow: hidden;*/
+/*}*/
+
+img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
 }
