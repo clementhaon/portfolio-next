@@ -121,7 +121,6 @@ section {
   position: relative;
   perspective: 500px;
   scroll-snap-align: center;
-  scroll-margin-top: 30px;
 }
 
 section > div {
