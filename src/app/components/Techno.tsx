@@ -1,10 +1,12 @@
-import { useRef } from "react";
+'use client';
+import {useEffect, useRef} from "react";
 import {
     motion,
     useScroll,
     useSpring,
     useTransform,
-    MotionValue
+    MotionValue,
+    inView,
 } from "framer-motion";
 
 function useParallax(value: MotionValue<number>, distance: number) {
@@ -16,33 +18,39 @@ function Image({ id }: { id: number }) {
     const { scrollYProgress } = useScroll({ target: ref });
     const y = useParallax(scrollYProgress, 300);
 
+
     return (
         <section>
-            <div ref={ref}>
+            <motion.div
+                ref={ref}
+                className="container-techno-scroll"
+                initial="hidden"
+                whileInView="visible"
+                onViewportLeave={(entry)=> {console.log(entry)}}
+                onAnimationComplete={definition => {
+                    console.log('Completed animating', definition)
+                }}
+                transition={{ duration: 0.5 }}
+                variants={{
+                    visible: { opacity: 1, scale: 1},
+                    hidden: { opacity: 0, scale: 0 }
+                }}
+            >
                 <img className="image-scroll" src={`/${id}.svg`} alt="A London skyscraper" />
-            </div>
+            </motion.div>
             <motion.h2 className="h2-scroll" style={{ y }}>{id === 1 ? '#BACKEND' : id === 2 ? "#FRONTEND" : id === 3 ? "#DEPLOIEMENT" : "#ENVIRONNEMENT"}</motion.h2>
         </section>
     );
 }
 
 export default function Techno() {
-    const { scrollYProgress } = useScroll();
-    const scaleX = useSpring(scrollYProgress, {
-        stiffness: 100,
-        damping: 30,
-        restDelta: 0.001
-    });
 
     return (
-        <>
-            <div className="scroll">
+            <>
                 {[1, 2, 3, 4].map((image, index) => (
                     <Image id={image} key={index} />
                 ))}
-                <motion.div className="progress" style={{ scaleX }} />
-            </div>
-        </>
+            </>
 
     );
 }

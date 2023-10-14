@@ -12,6 +12,7 @@ main, button, input, span, label, h1, h2, p, h3, h4, div {
   background-repeat: no-repeat;
   width:100%;
   height: 100vh;
+  scroll-snap-align: center;
 }
 .light-background {
   background-image: url("../asset/4856145.jpg");
@@ -19,6 +20,7 @@ main, button, input, span, label, h1, h2, p, h3, h4, div {
   background-repeat: no-repeat;
   width:100%;
   height: 100vh;
+  scroll-snap-align: center;
 }
 @media screen and (max-width: 1280px) {
   .dark-background, .light-background {
@@ -107,17 +109,19 @@ main, button, input, span, label, h1, h2, p, h3, h4, div {
   text-transform: uppercase;
 
 }
-.scroll {
+html {
   scroll-snap-type: y mandatory;
 }
+
 section {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  scroll-snap-align: center;
   perspective: 500px;
+  scroll-snap-align: center;
+  scroll-margin-top: 30px;
 }
 
 section > div {
@@ -180,4 +184,12 @@ img {
   bottom: 0;
   width: 100%;
   height: 100%;
+}
+.progress {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: #fff;
+  bottom: 100px;
 }

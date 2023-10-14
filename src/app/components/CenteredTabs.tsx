@@ -74,7 +74,7 @@ export default function CenteredTabs() {
 
     return (
 
-        <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
+        <Box sx={{ width: '100%', bgcolor: 'background.paper', scrollSnapAlign:'start'}}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs
                     value={value}
