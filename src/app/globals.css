@@ -22,7 +22,7 @@ main, button, input, span, label, h1, h2, p, h3, h4, div {
   height: 100vh;
   scroll-snap-align: center;
 }
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1650px) {
   .dark-background, .light-background {
     background-size: 100vw 100vh;
   }
@@ -115,6 +115,7 @@ html {
 
 section {
   height: 100vh;
+  width:100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -124,33 +125,60 @@ section {
 }
 
 section > div {
-  width: 70vw;
-  height: 50vh;
+  width: 100%;
   position: relative;
-  max-height: 90vh;
-  margin: 20px;
+  height: 70vh;
+  margin: 0 20px;
   overflow: hidden;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0 24px;
+  max-width: 1000px;
+}
+
+.container-image-techno {
+  display: flex;
+  flex-direction: column;
+  height: 35vh;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
 }
 
 .image-scroll {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(110, 110, 110, 0.12);
-  border-radius: 10px;
+  width: 200px;
+  margin: 0;
+  padding: 0;
+}
+.description-image-techno {
+  margin: 0;
+  padding: 0;
+  opacity: 0.5;
+  text-transform: lowercase;
+  font-weight: 300;
+}
 
+.dark-container-techno-scroll {
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+  background: rgb(246,246,246);
+  background: linear-gradient(135deg, rgba(246,246,246,0.6) 0%, rgba(150,150,150,0.6) 100%);
+}
+.light-container-techno-scroll {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  background: rgb(255,255,255);
+  background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(184,184,184,1) 100%);
 }
 
 .h2-scroll {
   margin: 0;
-  left: calc(50% + 20vw);
+  font-size: 24px;
+  /*left: 20px;*/
   letter-spacing: -1px;
   line-height: 1.2;
-  position: absolute;
+  /*position: absolute;*/
   padding:5px;
   border-radius: 10px;
   background-image: linear-gradient(90deg, #479eec 0%, #cd40f5 49%, #f0607b 100%);
@@ -175,15 +203,7 @@ section > div {
 /*  overflow: hidden;*/
 /*}*/
 
-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-}
+
 .progress {
   position: fixed;
   left: 0;

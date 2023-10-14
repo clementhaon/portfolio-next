@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { Chakra_Petch } from 'next/font/google'
 
 const inter = Chakra_Petch({
-  weight: ['400','500', '600'],
+  weight: ['300','400','500', '600'],
   subsets: ['latin'],
   display:'auto',
   variable: "--chakra-petch"

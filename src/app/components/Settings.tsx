@@ -115,59 +115,6 @@ export default function Settings() {
                         </FormControl>
                     </Box>
                 </Box>
-                {/*<Box*/}
-                {/*    sx={{*/}
-                {/*        display: 'flex',*/}
-                {/*        alignItems: 'center',*/}
-                {/*        justifyContent: 'center',*/}
-                {/*        mt: -1,*/}
-                {/*    }}*/}
-                {/*>*/}
-                {/*    <IconButton aria-label="previous song">*/}
-                {/*        <FastRewindRounded fontSize="large" htmlColor={mainIconColor} />*/}
-                {/*    </IconButton>*/}
-                {/*    <IconButton*/}
-                {/*        aria-label={paused ? 'play' : 'pause'}*/}
-                {/*        onClick={() => setPaused(!paused)}*/}
-                {/*    >*/}
-                {/*        {paused ? (*/}
-                {/*            <PlayArrowRounded*/}
-                {/*                sx={{ fontSize: '3rem' }}*/}
-                {/*                htmlColor={mainIconColor}*/}
-                {/*            />*/}
-                {/*        ) : (*/}
-                {/*            <PauseRounded sx={{ fontSize: '3rem' }} htmlColor={mainIconColor} />*/}
-                {/*        )}*/}
-                {/*    </IconButton>*/}
-                {/*    <IconButton aria-label="next song">*/}
-                {/*        <FastForwardRounded fontSize="large" htmlColor={mainIconColor} />*/}
-                {/*    </IconButton>*/}
-                {/*</Box>*/}
-                {/*<Stack spacing={2} direction="row" sx={{ mb: 1, px: 1 }} alignItems="center">*/}
-                {/*    <VolumeDownRounded htmlColor={lightIconColor} />*/}
-                {/*    <Slider*/}
-                {/*        aria-label="Volume"*/}
-                {/*        defaultValue={30}*/}
-                {/*        sx={{*/}
-                {/*            color:'#fff',*/}
-                {/*            '& .MuiSlider-track': {*/}
-                {/*                border: 'none',*/}
-                {/*            },*/}
-                {/*            '& .MuiSlider-thumb': {*/}
-                {/*                width: 24,*/}
-                {/*                height: 24,*/}
-                {/*                backgroundColor: '#fff',*/}
-                {/*                '&:before': {*/}
-                {/*                    boxShadow: '0 4px 8px rgba(0,0,0)',*/}
-                {/*                },*/}
-                {/*                '&:hover, &.Mui-focusVisible, &.Mui-active': {*/}
-                {/*                    boxShadow: 'none',*/}
-                {/*                },*/}
-                {/*            },*/}
-                {/*        }}*/}
-                {/*    />*/}
-                {/*    <VolumeUpRounded htmlColor={lightIconColor} />*/}
-                {/*</Stack>*/}
             </Widget>
         </Box>
     );
