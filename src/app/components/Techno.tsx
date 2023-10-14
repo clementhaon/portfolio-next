@@ -43,9 +43,12 @@ function Image({ image, type }: { image: string[], type:string }) {
                                 alt="Icon techno"
                                 initial="hidden"
                                 whileInView="visible"
-                                transition={{ duration: 0.2, delay:delay*index }}
+                                transition={{ duration: 0.2, delay:delay*index, ease: [0.2, 0.65, 0.3, 0.9],}}
                                 variants={{
-                                    visible: { rotate: 0, scale: 1},
+                                    visible: {
+                                        rotate: 0,
+                                        scale: 1,
+                                    },
                                     hidden: { rotate: 180, scale: 0 }
                                 }}
                             />
@@ -69,7 +72,7 @@ function Image({ image, type }: { image: string[], type:string }) {
                 ))}
 
             </motion.div>
-            <motion.h2 className="h2-scroll" style={{ y }}>{type}</motion.h2>
+            <motion.h2 className={`h2-scroll background-badge-${mode === "dark" ?"dark" : "light"}`} style={{ y }}>{type}</motion.h2>
         </section>
     );
 }

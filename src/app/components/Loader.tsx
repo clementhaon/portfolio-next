@@ -36,7 +36,7 @@ function CircularProgressWithLabel(
                     variant="caption"
                     component="div"
                     color="#fff"
-                    sx={{fontSize:"3rem",zIndex:1002}}
+                    className="text-loader"
                 >{`${Math.round(props.value)}%`}</Typography>
             </Box>
         </Box>
