@@ -6,10 +6,12 @@ import { BsToggles } from 'react-icons/bs';
 import Settings from './Settings';
 import gsap from 'gsap';
 import {AiFillCloseCircle} from "react-icons/ai";
+import CircularWithValueLabel from "./Loader";
 
 
 export default function Header() {
 
+    const [isLoading, setIsLoading] = useState<boolean>(true);
     const [openSettings, setOpenSettings] = useState<boolean>(false);
     const [position, setPosition] = useState<boolean>(false);
     const settingsRef: RefObject<HTMLDivElement> = useRef(null);
@@ -17,53 +19,59 @@ export default function Header() {
     const { mode } = React.useContext(ColorModeContext);
 
     useEffect(() => {
+        const timeoutId = setTimeout(() => {
+            //Centered position with screen height
+            const clientHeight = window.innerHeight;
+            const centerY = clientHeight / 2;
+            const avatarHeight = 250;
+            const textContainerHeight = 100;
+            const totalHeight = avatarHeight + textContainerHeight;
+            const ensembleTop = centerY - totalHeight / 2.5;
+            const textContainerTop = ensembleTop + (avatarHeight / 1.5);
+            const avatar = document.getElementById('avatar-position');
+            if (avatar) {
+                avatar.style.maxHeight = `${avatarHeight}px`;
+                avatar.style.top = `${ensembleTop}px`;
+            }
 
-        //Centered position with screen height
-        const clientHeight = window.innerHeight;
-        const centerY = clientHeight / 2;
-        const avatarHeight = 250;
-        const textContainerHeight = 100;
-        const totalHeight = avatarHeight + textContainerHeight;
-        const ensembleTop = centerY - totalHeight / 2.5;
-        const textContainerTop = ensembleTop + (avatarHeight / 1.5);
-        const avatar = document.getElementById('avatar-position');
-        if (avatar) {
-            avatar.style.maxHeight = `${avatarHeight}px`;
-            avatar.style.top = `${ensembleTop}px`;
-        }
+            //Set text gsap
+            const text = "Clément HAON\nDéveloppeur\nfull stack";
+            const container = document.getElementById('text-container');
+            setPosition(true);
+            setIsLoading(false);
 
-        //Set text gsap
-        const text = "Clément HAON\nDéveloppeur\nfull stack";
-        const container = document.getElementById('text-container');
-        setPosition(true);
-        if (container) {
-            container.innerHTML = '';
-            container.style.top = `${textContainerTop}px`;
-            text.split('').forEach((letter, index) => {
-                const span = document.createElement('span');
-                if (letter === '\n') {
-                    span.style.display = 'block'; // Forcer le retour à la ligne avec un élément de bloc
-                }
-                span.textContent = letter;
-                span.style.opacity = "0";
-                span.style.fontWeight = "600";
-                span.style.fontSize = '40px';
-                span.style.textTransform = "uppercase";
-                container.appendChild(span);
-
-                gsap.to(span, {
-                    opacity: 1,
-                    duration: 1,
-                    delay: index * 0.1,
-                    onComplete: () => {
-                        if (index === text.length - 1) {
-                            console.log('Animation complète');
-                        }
+            if (container) {
+                container.innerHTML = '';
+                container.style.top = `${textContainerTop}px`;
+                text.split('').forEach((letter, index) => {
+                    const span = document.createElement('span');
+                    if (letter === '\n') {
+                        span.style.display = 'block'; // Forcer le retour à la ligne avec un élément de bloc
                     }
-                });
-            });
-        }
+                    span.textContent = letter;
+                    span.style.opacity = "0";
+                    span.style.fontWeight = "600";
+                    span.style.fontSize = '40px';
+                    span.style.textTransform = "uppercase";
+                    container.appendChild(span);
 
+                    gsap.to(span, {
+                        opacity: 1,
+                        duration: 1,
+                        delay: index * 0.1,
+                        onComplete: () => {
+                            if (index === text.length - 1) {
+                                console.log('Animation complète');
+                            }
+                        }
+                    });
+                });
+            }
+        }, 1500);
+
+        return () => {
+            clearTimeout(timeoutId);
+        };
 
     }, []);
     useEffect(() => {
@@ -80,6 +88,10 @@ export default function Header() {
 
     return (
         <Box className={`${mode === 'dark' ? 'dark':'light'}-background`}>
+            {isLoading && (
+                <CircularWithValueLabel/>
+            )}
+
             <div style={{position:"relative", width:'100%', height:'100vh'}}>
                 {position ?
                     (
@@ -112,7 +124,7 @@ export default function Header() {
                         <Box
                             className="icon-container svg-settings"
                             ref={buttonsRef}
-                            style={{backgroundColor: `${mode === 'dark' ? '#2d2d2d':'#fff'}`, zIndex:1000}}
+                            style={{backgroundColor: `${mode === 'dark' ? '#2d2d2d':'#fff'}`, zIndex:998}}
                             onClick={()=>setOpenSettings(true)}
                         >
                             <BsToggles
@@ -122,7 +134,7 @@ export default function Header() {
                     ) : (
                         <Box
                             className="icon-container svg-settings"
-                            style={{backgroundColor: `${mode === 'dark' ? '#2d2d2d':'#fff'}`, zIndex:1000}}
+                            style={{backgroundColor: `${mode === 'dark' ? '#2d2d2d':'#fff'}`, zIndex:998}}
                             ref={buttonsRef}
                             onClick={()=>setOpenSettings(false)}
                         >

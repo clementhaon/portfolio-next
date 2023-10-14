@@ -7,6 +7,7 @@ import {
     MotionValue,
 } from "framer-motion";
 import {ColorModeContext} from "../styles/Theme";
+import {Box} from "@mui/material";
 
 function useParallax(value: MotionValue<number>, distance: number) {
     return useTransform(value, [0, 1], [-distance, distance]);
@@ -53,7 +54,7 @@ function Image({ image, type }: { image: string[], type:string }) {
                             className="description-image-techno"
                             initial="hidden"
                             whileInView="visible"
-                            transition={{ duration: 0.3, delay:delay*index }}
+                            transition={{ duration: 0.2, delay:delay*index }}
                             variants={{
                                 visible: { opacity: .5, scale: 1},
                                 hidden: { opacity: 0, scale: 0 }
@@ -79,6 +80,9 @@ export default function Techno() {
     const imageEnv = ['github','visual-studio-code', 'sourcetree', 'apple','jetbrains','ubuntu', 'gitkraken']
     return (
         <>
+            <Box className='flex-center-max-width'>
+                <h4 style={{fontSize:"2rem", maxWidth:"1000px", textAlign:"center"}}>Bienvenue dans mon univers numérique ! En tant que développeur passionné, je me lance constamment dans un voyage d'exploration à travers le paysage en constante évolution des technologies. Voici un aperçu de l'arsenal que j'ai constitué au fil des ans.</h4>
+            </Box>
             <div>
                 <Image image={imageBack} type={'#BACKEND'} />
             </div>
@@ -91,6 +95,7 @@ export default function Techno() {
             <div>
                 <Image image={imageEnv} type={'#ENVIRONNEMENT'} />
             </div>
+
         </>
     );
 }
