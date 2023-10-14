@@ -1,5 +1,5 @@
 'use client';
-import React, {useRef} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {
     motion,
     useScroll,
@@ -17,9 +17,21 @@ function useParallax(value: MotionValue<number>, distance: number) {
 function Image({ image, type }: { image: string[], type:string }) {
     const { mode } = React.useContext(ColorModeContext);
     const ref = useRef(null);
+    const [width, setWidth] = useState<any>(null);
     const { scrollYProgress } = useScroll({ target: ref });
     const y = useParallax(scrollYProgress, 300);
+    useEffect(() => {
+        const handleResize = () => {
+            console.log(window.innerWidth)
+            setWidth(window.innerWidth);
+        };
 
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
     const delay = 0.2;
     return (
         <section>
@@ -72,7 +84,11 @@ function Image({ image, type }: { image: string[], type:string }) {
                 ))}
 
             </motion.div>
-            <motion.h2 className={`h2-scroll background-badge-${mode === "dark" ?"dark" : "light"}`} style={{ y }}>{type}</motion.h2>
+            {width > 900 ? (
+                <motion.h2 className={`h2-scroll background-badge-${mode === "dark" ?"dark" : "light"}`} style={{ y }}>{type}</motion.h2>
+            ) : (
+                <h2 className={`h2-scroll background-badge-${mode === "dark" ?"dark" : "light"}`}>{type}</h2>
+            )}
         </section>
     );
 }
