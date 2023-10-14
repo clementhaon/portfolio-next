@@ -81,7 +81,7 @@ export default function Techno() {
     return (
         <>
             <Box className='flex-center-max-width'>
-                <h4 style={{fontSize:"2rem", maxWidth:"1000px", textAlign:"center"}}>Bienvenue dans mon univers numérique ! En tant que développeur passionné, je me lance constamment dans un voyage d'exploration à travers le paysage en constante évolution des technologies. Voici un aperçu de l'arsenal que j'ai constitué au fil des ans.</h4>
+                <h4 style={{fontSize:"2rem", maxWidth:"1000px", textAlign:"center"}}>Bienvenue dans mon univers numérique ! En tant que développeur passionné, je me lance constamment dans un voyage d&apos;exploration à travers le paysage en constante évolution des technologies. Voici un aperçu de l&apos;arsenal que j&apos;ai constitué au fil des ans.</h4>
             </Box>
             <div>
                 <Image image={imageBack} type={'#BACKEND'} />
