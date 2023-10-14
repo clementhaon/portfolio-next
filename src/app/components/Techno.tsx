@@ -8,6 +8,7 @@ import {
 } from "framer-motion";
 import {ColorModeContext} from "../styles/Theme";
 import {Box} from "@mui/material";
+import {hidden} from "next/dist/lib/picocolors";
 
 function useParallax(value: MotionValue<number>, distance: number) {
     return useTransform(value, [0, 1], [-distance, distance]);
@@ -77,11 +78,44 @@ export default function Techno() {
     const imageBack = ['nodejs','redis','mysql','mongodb', 'php','laravel','codeigniter'];
     const imageFront = ['vue-js', 'react', 'typescript', 'react-native', 'redux', 'material-ui','next-js'];
     const imageDeployment = ['docker','buddy-works', 'digitalocean','nginx','vercel', 'grafana','google-cloud'];
-    const imageEnv = ['github','visual-studio-code', 'sourcetree', 'apple','jetbrains','ubuntu', 'gitkraken']
+    const imageEnv = ['github','visual-studio-code', 'sourcetree', 'apple','jetbrains','ubuntu', 'gitkraken'];
+    const text = "Bienvenue dans mon univers numérique ! En tant que développeur passionné, je me lance constamment dans un voyage d'exploration à travers le paysage en constante évolution des technologies. Voici un aperçu de l'arsenal que j'ai constitué au fil des ans.";
+    const words = text.split(/\s+/);
+
     return (
         <>
             <Box className='flex-center-max-width'>
-                <h4 style={{fontSize:"2rem", maxWidth:"1000px", textAlign:"center"}}>Bienvenue dans mon univers numérique ! En tant que développeur passionné, je me lance constamment dans un voyage d&apos;exploration à travers le paysage en constante évolution des technologies. Voici un aperçu de l&apos;arsenal que j&apos;ai constitué au fil des ans.</h4>
+                <h4
+                    style={{fontSize:"2rem", maxWidth:"1000px", textAlign:"center"}}
+                >
+                {words.map((letter, index) => (
+                    <motion.span
+                        key={index}
+                        style={{display:'inline-block', whiteSpace:'nowrap'}}
+                        initial="hidden"
+                        whileInView="visible"
+                        transition={{ duration: 0.2}}
+                        variants={{
+                            hidden: {
+                                opacity: 0,
+                                y: `0.45em`,
+                            },
+                            visible: {
+                                opacity: 1,
+                                y: `0em`,
+                                transition: {
+                                    duration: 1,
+                                    ease: [0.2, 0.65, 0.3, 0.9],
+                                    delay:index*0.05
+                            },
+                            },
+                        }}
+                    >
+                        {letter}&nbsp;
+                    </motion.span>
+                ))}
+                </h4>
+                {/*<h4 style={{fontSize:"2rem", maxWidth:"1000px", textAlign:"center"}}></h4>*/}
             </Box>
             <div>
                 <Image image={imageBack} type={'#BACKEND'} />
