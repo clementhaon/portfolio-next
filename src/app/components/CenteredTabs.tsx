@@ -106,7 +106,7 @@ export default function CenteredTabs() {
                         viewport={{once:true}}
                         variants={{
                             hidden: {
-                                y: -100,
+                                y: 100,
                             },
                             visible: {
                                 y: 0,
