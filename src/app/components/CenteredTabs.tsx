@@ -8,6 +8,7 @@ import Techno from './Techno';
 import About from './About';
 import Experience from "./Experience";
 import {ColorModeContextType} from '../types/theme';
+import {motion} from "framer-motion";
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -97,6 +98,27 @@ export default function CenteredTabs() {
                 <Experience/>
             </CustomTabPanel>
             <CustomTabPanel value={value} index={2}>
+                <Box sx={{width:"100%", display:'flex', justifyContent:'center', alignItems:"center"}}>
+                    <motion.h4
+                        style={{fontSize:"2rem", maxWidth:"1000px", textAlign:"center"}}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{once:true}}
+                        variants={{
+                            hidden: {
+                                y: -100,
+                            },
+                            visible: {
+                                y: 0,
+                                transition: {
+                                    type:'spring'
+                                },
+                            },
+                        }}
+                    >
+                        Rejoignez moi !
+                    </motion.h4>
+                </Box>
                 <About/>
             </CustomTabPanel>
         </Box>
