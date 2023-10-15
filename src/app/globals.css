@@ -3,7 +3,7 @@
   --border-radius: 12px;
 
 }
-main, button, input, span, label, h1, h2, p, h3, h4, div {
+main, button, input, span, label, h1, h2, p, h3, h4, div, h6 {
   font-family: var(--chakra-petch), sans-serif!important;
 }
 .dark-background {

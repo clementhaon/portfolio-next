@@ -54,7 +54,13 @@ function Image({ image, type }: { image: string[], type:string }) {
                                 alt="Icon techno"
                                 initial="hidden"
                                 whileInView="visible"
-                                transition={{ duration: 0.2, delay:delay*index, ease: [0.2, 0.65, 0.3, 0.9],}}
+                                transition={{
+                                    type: "spring",
+                                    stiffness: 260,
+                                    damping: 20,
+                                    duration:0.2,
+                                    delay: delay*index
+                                }}
                                 variants={{
                                     visible: {
                                         rotate: 0,
