@@ -22,7 +22,6 @@ function Image({ image, type }: { image: string[], type:string }) {
     const y = useParallax(scrollYProgress, 300);
     useEffect(() => {
         const handleResize = () => {
-            console.log(window.innerWidth)
             setWidth(window.innerWidth);
         };
 
@@ -98,7 +97,7 @@ export default function Techno() {
     const imageFront = ['vue-js', 'react', 'typescript', 'react-native', 'redux', 'material-ui','next-js'];
     const imageDeployment = ['docker','buddy-works', 'digitalocean','nginx','vercel', 'grafana','google-cloud'];
     const imageEnv = ['github','visual-studio-code', 'sourcetree', 'apple','jetbrains','ubuntu', 'gitkraken'];
-    const text = "Bienvenue dans mon univers numérique ! En tant que développeur passionné, je me lance constamment dans un voyage d'exploration à travers le paysage en constante évolution des technologies. Voici un aperçu de l'arsenal que j'ai constitué au fil des ans.";
+    const text = "Bienvenue dans mon univers numérique ! Voici un aperçu des technologies que j'ai pratiqué au fil des ans à travers le paysage en constante évolution des technologies.";
     const words = text.split(/\s+/);
 
     return (
@@ -113,6 +112,7 @@ export default function Techno() {
                         style={{display:'inline-block', whiteSpace:'nowrap'}}
                         initial="hidden"
                         whileInView="visible"
+                        viewport={{once:true}}
                         transition={{ duration: 0.2}}
                         variants={{
                             hidden: {
@@ -123,7 +123,7 @@ export default function Techno() {
                                 opacity: 1,
                                 y: `0em`,
                                 transition: {
-                                    duration: 1,
+                                    duration: 0.3,
                                     ease: [0.2, 0.65, 0.3, 0.9],
                                     delay:index*0.05
                             },

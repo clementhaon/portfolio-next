@@ -1,5 +1,5 @@
 'use client'
-import React, {ReactNode} from 'react';
+import React, {ReactNode, useEffect} from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import {CssBaseline, PaletteMode} from '@mui/material';
 import {ColorModeContextType} from '../types/theme';
@@ -13,10 +13,19 @@ export const ColorModeContext = React.createContext<ColorModeContextType>({
 interface ToggleColorModeProps {
     children: ReactNode; // Définissez le type de children comme ReactNode
 }
-const ToggleColorMode: React.FC<ToggleColorModeProps> = ({ children }) => {    const [mode, setMode] = React.useState('light');
+const ToggleColorMode: React.FC<ToggleColorModeProps> = ({ children }) => {
+    const [mode, setMode] = React.useState('light');
+
+    useEffect(() => {
+        const localMode = localStorage.getItem('colorMode');
+        if (localMode) {
+            setMode(localMode);
+        }
+    }, []);
 
     const toggleColorMode = () => {
         setMode(prevMode => (prevMode === 'light' ? 'dark' : 'light'));
+        localStorage.setItem('colorMode', mode === 'light' ? 'dark' : 'light');
     };
 
     const lightPalette: PaletteOptions = {

@@ -191,6 +191,10 @@ section {
     height: 100px!important;
     width: 100px!important;
   }
+  .h2-scroll{
+    margin-bottom: -15px!important;
+    z-index: 100;
+  }
 
 }
 section > div {
