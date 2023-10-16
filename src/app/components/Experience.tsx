@@ -27,9 +27,19 @@ const Experience = () => {
             chip: ["Node","Docker", "React", "Typescript"]
         },
         {
+            title: "Media",
+            description: "Pour un média provencal, api node.js avec mise en cache pour client grace à redis, back office react typescript",
+            chip: ["Node","Redis", "Docker", 'React', "Typescript"]
+        },
+        {
             title: "Paris sportif",
             description: "Une application react native composé d'expo et redux ainsi que l'api codeigniter achat in-app",
             chip: ["PHP", "Codeigniter", "React native", 'revenueCat', "firebase", ]
+        },
+        {
+            title: "Émargement",
+            description: "Api et back office pour une application d'émargement à destination d'une grande association française",
+            chip: ["Node", "react", "docker", 'typescript' ]
         },
         {
             title: "Réseau social",
@@ -57,6 +67,11 @@ const Experience = () => {
             title: "Association",
             description: "Membre de l'association entraide et sauvetage protection animale pour la gestion du site internet",
             chip: ["Wordpress"]
+        },
+        {
+            title: "Portfolio",
+            description: "Ce magnifique portfolio que vos êtes entrain de visiter",
+            chip: ["Next", "Vercel"]
         },
     ];
     return (
