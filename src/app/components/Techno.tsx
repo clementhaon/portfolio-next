@@ -24,7 +24,7 @@ function Image({ image, type }: { image: string[], type:string }) {
         const handleResize = () => {
             setWidth(window.innerWidth);
         };
-
+        handleResize()
         window.addEventListener('resize', handleResize);
 
         return () => {

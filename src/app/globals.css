@@ -86,13 +86,9 @@ main, button, input, span, label, h1, h2, p, h3, h4, div, h6 {
 
 .selected-tab-dark {
   color: #c4c2c2;
-  margin: 10px 80px;
-  padding: 0 50px;
 }
 .selected-tab-light {
   color: #232323;
-  margin: 10px 80px;
-  padding: 0 50px;
 }
 
 .selected-tabs-light .Mui-selected {
