@@ -3,6 +3,11 @@ import React, {useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
 import Pagination from '@mui/material/Pagination';
 import TextField from '@mui/material/TextField';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormHelperText from '@mui/material/FormHelperText';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import axios from 'axios';
 
@@ -28,6 +33,7 @@ interface Data {
 export default function Elasticsearch() {
     //state for data
     const [data, setData] = useState<User[]>([]);
+    const [searchColumns, setSearchColumns] = useState<string>('');
     const [totalPages, setTotalPages] = useState<number>(0);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [search, setSearch] = useState<string>('');
@@ -70,6 +76,11 @@ export default function Elasticsearch() {
         }
       ];
 
+    //handle change for select
+    const handleChange = (event: SelectChangeEvent) => {
+        setSearchColumns(event.target.value);
+    };
+
     //fetch data from elasticsearch
     const fetchData = async (page:number) => {
         try {
@@ -83,7 +94,7 @@ export default function Elasticsearch() {
     
                 // Mise à jour de l'état avec les données formatées
                 setData(formattedData);
-                setTotalPages(1000);
+                setTotalPages(10000);
             }
             
         } catch (error) {
@@ -106,8 +117,9 @@ export default function Elasticsearch() {
         const fetchDataSearch = async () => {
             try {
                 const response = await axios.post(`https://klem-online-cloudy.fr/api/search`, {
-                    value: search
-                    });
+                    value: search,
+                    column: searchColumns
+                });
     
                 if (response.data && response.data.success && response.data.data) {
                     const jsonData: Data[] = response.data.data;
@@ -132,21 +144,47 @@ export default function Elasticsearch() {
             }
         }
        
-    }, [search]);
+    }, [search, searchColumns]);
 
     return (
         <>
             <Box className="flex-center-max-width flex-column">
                 <h1>Exemple Elasticsearch Node.js, hébergé sur mon vps</h1>
                 <p style={{fontStyle: "italic"}}>La data est fake, créé sur Mockaroo</p>
-                <TextField
-                 sx={{mt:2, mb:4}} 
-                 id="outlined-basic" 
-                 label="Rechercher" 
-                 variant="outlined" 
-                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                    setSearch(event.target.value);
-                }} />
+                
+                <Box className="flex-center-max-width" >
+                    <TextField
+                    
+                    id="outlined-basic" 
+                    label="Rechercher" 
+                    variant="outlined" 
+                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                        setSearch(event.target.value);
+                    }} />
+                    <FormControl sx={{ m: 1, minWidth: 120 }}>
+                        <InputLabel id="demo-simple-select-helper-label">Colonne</InputLabel>
+                        <Select
+                        labelId="demo-simple-select-helper-label"
+                        id="demo-simple-select-helper"
+                        value={searchColumns}
+                        label="Collone"
+                        onChange={handleChange}
+                        >
+                            <MenuItem value="">
+                                <em>Toutes</em>
+                            </MenuItem>
+                            <MenuItem value={"id"}>Id</MenuItem>
+                            <MenuItem value={"first_name"}>First Name</MenuItem>
+                            <MenuItem value={"last_name"}>Last Name</MenuItem>
+                            <MenuItem value={"address"}>Address</MenuItem>
+                            <MenuItem value={"country"}>Country</MenuItem>
+                            <MenuItem value={"car"}>Car</MenuItem>
+                            <MenuItem value={"car_model_year"}>Car model year</MenuItem>
+                        </Select>
+                    </FormControl>
+                    <FormHelperText>Si une colonne est sélectionnée une recherche exacte sera effectuée</FormHelperText>
+
+                </Box>
             </Box>
             <div className='flex-center-max-width'>
                 <div style={{ width: '100%', maxWidth: "1300px" }}>
