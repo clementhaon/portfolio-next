@@ -7,6 +7,7 @@ import {ColorModeContext} from "../styles/Theme";
 import Techno from './Techno';
 import About from './About';
 import Experience from "./Experience";
+import Elasticsearch from './Elasticsearch';
 import {ColorModeContextType} from '../types/theme';
 import {motion} from "framer-motion";
 
@@ -89,6 +90,7 @@ export default function CenteredTabs() {
                     <Tab className={`selected-tab-${mode === 'dark' ? 'dark': 'light'}`} label="Technos" {...a11yProps(0)}/>
                     <Tab className={`selected-tab-${mode === 'dark' ? 'dark': 'light'}`} label="Projets" {...a11yProps(1)}/>
                     <Tab className={`selected-tab-${mode === 'dark' ? 'dark': 'light'}`} label="À propos" {...a11yProps(2)}/>
+                    <Tab className={`selected-tab-${mode === 'dark' ? 'dark': 'light'}`} label="Training" {...a11yProps(3)}/>
                 </Tabs>
             </Box>
             <CustomTabPanel value={value} index={0}>
@@ -120,6 +122,9 @@ export default function CenteredTabs() {
                     </motion.h4>
                 </Box>
                 <About/>
+            </CustomTabPanel>
+            <CustomTabPanel value={value} index={3}>
+                <Elasticsearch/>
             </CustomTabPanel>
         </Box>
     );

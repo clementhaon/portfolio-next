@@ -63,6 +63,9 @@ main, button, input, span, label, h1, h2, p, h3, h4, div, h6 {
   align-items: center;
   width: 100%;
 }
+.flex-column {
+  flex-direction: column;
+}
 
 .flex-end-row {
   display: flex;
