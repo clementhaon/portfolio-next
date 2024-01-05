@@ -70,7 +70,7 @@ const Experience = () => {
         },
         {
             title: "Portfolio",
-            description: "Ce magnifique portfolio que vos êtes entrain de visiter",
+            description: "Ce magnifique portfolio que vous êtes entrain de visiter",
             chip: ["Next", "Vercel"]
         },
     ];

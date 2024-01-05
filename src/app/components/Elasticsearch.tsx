@@ -150,7 +150,7 @@ export default function Elasticsearch() {
         <>
             <Box className="flex-center-max-width flex-column">
                 <h1>Exemple Elasticsearch Node.js, hébergé sur mon vps</h1>
-                <p style={{fontStyle: "italic"}}>La data est fake, créé sur Mockaroo</p>
+                <p style={{fontStyle: "italic"}}>{`La data a été générée via Mockaroo et contient un million d'objet`}</p>
                 
                 <Box className="flex-center-max-width" >
                     <TextField
