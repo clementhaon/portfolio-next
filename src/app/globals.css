@@ -129,6 +129,7 @@ main, button, input, span, label, h1, h2, p, h3, h4, div, h6 {
 .cursor-pointer {
   cursor: pointer;
 }
+/*
 @media screen and (min-width: 1000px) {
   html {
     scroll-snap-type: y mandatory;
@@ -146,6 +147,7 @@ main, button, input, span, label, h1, h2, p, h3, h4, div, h6 {
   }
 
 }
+*/
 
 
 section {
